@@ -10,13 +10,13 @@
 
 	if($ip == "0")
 	{
-		echo "Error!Cann't get public IP!<br>";
+		echo "Error!Cann't get public IP!\n";
 	}else
 	{
 		for($i=0;$i<count($hostname);$i++)
 		{
 			$dnsomaticapi = "https://$username:$password@updates.dnsomatic.com/nic/update?hostname=$hostname[$i]&myip=$ip&wildcard=NOCHG&mx=NOCHG&backmx=NOCHG";
-			echo $hostname[$i]." ".http_request($dnsomaticapi)."<br>";
+			echo $hostname[$i]." ".http_request($dnsomaticapi)."\n";
 		}
 	}
 
