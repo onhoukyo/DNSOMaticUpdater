@@ -1,12 +1,12 @@
 <?php
-	//请先访问https://www.dnsomatic.com/并注册一个账户。
-	//注意 此网站不提供动态域名解析服务，只是一个更新平台
-	$username = "123";					//dnsomatic的用户名
-	$password = "123";					//dnsomatic的密码
-	$ip = get_publicIP();				//获取公网ip
+	//将下面的信息修改为DNS-O-Matic的用户信息
+	$username = "123";
+	$password = "123";
 	$hostname[] = "a.example.com";		//在dnsomatic添加服务，然后在这里填写域名
 	$hostname[] = "b.example.net";
 	$hostname[] = "c.example.org";
+
+	$ip = get_publicIP();
 
 	if($ip == "0")
 	{
@@ -38,7 +38,6 @@
 
 	function get_publicIP()
 	{
-		//优先使用k780的api，速度较快。
 		$json = file_get_contents("http://api.k780.com/?app=ip.local&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json");
 		$info = json_decode($json,true);
 		if($info["success"]=="1")
@@ -47,7 +46,6 @@
 			return $result["ip"];
 		}else
 		{
-			//如果挂掉了换淘宝api
 			$json = file_get_contents("http://ip.taobao.com/service/getIpInfo.php?ip=myip");
 			$info = json_decode($json,true);
 			if($info["code"]=="0")
